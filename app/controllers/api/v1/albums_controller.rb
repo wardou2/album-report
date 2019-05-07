@@ -1,15 +1,19 @@
 require 'pry'
 class Api::V1::AlbumsController < ApplicationController
+  before_action :find_album, only: [:destroy, :update]
 
   def index
     @albums = Album.all
     render json: @albums
   end
 
+  def show
+    render json: @album
+  end
+
   def create
-    binding.pry
+
     @album = Album.new(title: album_params['albumTitle'], artist: @artist, art: album_params['coverArt'])
-    binding.pry
     if @album.save
       render json: @album, status: :accepted
     else
@@ -24,6 +28,11 @@ class Api::V1::AlbumsController < ApplicationController
     else
       render json: { errors: @album.errors.full_messages }, status: :unprocessible_entity
     end
+  end
+
+  def destroy
+    @album.destroy()
+    render json: @album
   end
 
   private

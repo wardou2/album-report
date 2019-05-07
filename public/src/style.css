@@ -1,0 +1,20 @@
+div.left-menu {
+  float: left;
+  width: 250px;
+  background-color: lightblue;
+  text-align: center;
+}
+
+div.album-div {
+  border-style: solid;
+}
+
+img.album-art {
+  display: inline-block;
+  height: 150px;
+  margin-bottom: 5px;
+}
+
+body {
+   background-color: goldenrod;
+ }
