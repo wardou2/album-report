@@ -1,24 +1,51 @@
-<h1 id='title'>Album Notes</h1>
-<form id='new_album'>
-  <label for="artist_name">Artist Name: </label>
-  <input type="text" name="artist_name"><br>
-  <label for="album_title">Album Title: </label>
-  <input type="text" name="album_title"><br>
-  <input type='submit' value="Add Album">
-</form>
-<!-- <div id='error' style="display:none;"> </div> -->
-<div id='error' class='alert' style="display:none;">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  Album/Artist combination not found
-</div><br>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<body>
+  <h1 id='title'>Album Notes</h1>
 
-<div id="albums-menu" class="left-menu"></div>
+  <form id='new_album'>
+    <label for="artist_name">Artist Name: </label>
+    <input type="text" name="artist_name"><br>
+    <label for="album_title">Album Title: </label>
+    <input type="text" name="album_title"><br>
+    <input type='submit' value="Add Album">
+  </form>
 
-<div id="notes-display" class="notes-div">
-  <h1> NOTES NOTES NOTES NOTES </h1>
-</div>
+  <form id='edit_album' style="display:none;">
+    <label for="artist_name">Artist Name: </label>
+    <input type="text" id='edit_artist_name' name="artist_name"><br>
+    <label for="album_title">Album Title: </label>
+    <input type="text" id='edit_album_title' name="album_title"><br>
+    <input type='submit' value="Edit Album">
+  </form>
+
+  <div id='error' class='alert' style="display:none;">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Album/Artist combination not found
+  </div><br>
+
+  <div id="albums-menu" class="left-menu"></div>
+
+  <div id="notes-display" class="notes-div" style="display:none">
+    <h1> My Notes:</h1>
+    
+    <form id='new_note'>
+      <label for="note_content">New Note: </label>
+      <input type="text" id='new_note_content' name="note_content">
+      <input type='submit' value="Add Note">
+    </form>
+
+    <form id='edit_note' style="display:none;">
+      <label for="note_content">Note Content: </label>
+      <input type="text" id='edit_note_content' name="note_content"><br>
+      <input type='submit' value="Edit Note">
+    </form>
+    <ul id='notes-list'> <ul>
+  </div>
+</body>
 
 <link rel="stylesheet" type="text/css" href="src/style.css">
+
+<script src='/src/note.js'></script>
 <script src='/src/album.js'></script>
 <script src='/src/last_fm_api.js'></script>
 <script src='/src/main.js'></script>

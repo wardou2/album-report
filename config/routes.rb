@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :artists, only: [:index, :update]
       resources :albums, only: [:index, :create, :update, :destroy, :show]
-      resources :notes, only: [:index, :update]
+      resources :notes, only: [:index, :create, :update, :destroy]
     end
   end
 

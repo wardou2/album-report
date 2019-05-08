@@ -1,10 +1,12 @@
+const URL = '/api/v1/albums'
+const notesURL = '/api/v1/notes'
+let CURRENT_NOTE = null
+
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log('hi there');
   console.log('DOM fully loaded and parsed');
   main()
 });
-
-const URL = '/api/v1/albums'
 
 function getAlbums() {
   fetch(URL)
@@ -23,9 +25,9 @@ function eachAlbums(albums) {
 }
 
 function renderAlbum(album) {
-  album = new Album(album.id, album.title, album.artist, album.art)
+  album = new Album(album.id, album.title, album.artist, album.art, album.notes)
   let leftDiv = document.getElementById('albums-menu')
-  leftDiv.appendChild(album.render())
+  leftDiv.prepend(album.render())
 }
 
 function clearAlbums() {
@@ -33,6 +35,29 @@ function clearAlbums() {
   while(leftDiv.firstChild) {
     leftDiv.firstChild.remove()
   }
+}
+
+function createNote(ev, album) {
+  ev.preventDefault()
+  fetch(notesURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      content: ev.target.elements['note_content'].value,
+      album_id: album.id
+    })
+  })
+  .then(res => res.json())
+  .then(json => {
+    let note = new Note(json.id, json.content, json.album, json.created_at)
+    let li = document.createElement('li')
+    let notesList = document.getElementById('notes-list')
+    note.render(li)
+    notesList.prepend(li)
+  })
 }
 
 function createAlbum(albumTitle, artistName, coverArt) {

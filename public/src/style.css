@@ -18,7 +18,7 @@ div.album-div {
 }
 
 div.notes-div {
-  float: left;
+  /* float: left; */
   margin: 10px;
 
 }
@@ -31,6 +31,7 @@ img.album-art {
 
 body {
    background-color: goldenrod;
+   font-family: 'Open Sans', sans-serif;
  }
 
 div.error {
