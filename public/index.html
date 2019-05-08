@@ -6,8 +6,17 @@
   <input type="text" name="album_title"><br>
   <input type='submit' value="Add Album">
 </form>
+<!-- <div id='error' style="display:none;"> </div> -->
+<div id='error' class='alert' style="display:none;">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Album/Artist combination not found
+</div><br>
 
 <div id="albums-menu" class="left-menu"></div>
+
+<div id="notes-display" class="notes-div">
+  <h1> NOTES NOTES NOTES NOTES </h1>
+</div>
 
 <link rel="stylesheet" type="text/css" href="src/style.css">
 <script src='/src/album.js'></script>

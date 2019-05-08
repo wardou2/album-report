@@ -1,12 +1,26 @@
 div.left-menu {
   float: left;
-  width: 250px;
-  background-color: lightblue;
+  width: 275px;
   text-align: center;
+  border-style: solid;
+  border-radius: 13px;
+  background-color:black;
+
+  height: 80vh;
+  overflow: scroll;
 }
 
 div.album-div {
+  background-color: lightblue;
   border-style: solid;
+  border-radius: 10px;
+  margin: 10px
+}
+
+div.notes-div {
+  float: left;
+  margin: 10px;
+
 }
 
 img.album-art {
@@ -18,3 +32,30 @@ img.album-art {
 body {
    background-color: goldenrod;
  }
+
+div.error {
+ display: none;
+ background-color: red;
+}
+
+.alert {
+  padding: 20px;
+  background-color: red;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

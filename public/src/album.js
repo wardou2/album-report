@@ -11,6 +11,9 @@ class Album {
     albumDiv.classList.add('album-div')
     let albumText = document.createElement('h3')
     albumText.textContent = `${this.title} - ${this.artist.name}`
+    albumText.addEventListener('click', () => {
+      this.displayNotes()
+    })
 
     let dlt = document.createElement('button')
     dlt.textContent = "Delete"
@@ -25,7 +28,12 @@ class Album {
     albumDiv.appendChild(albumText)
     albumDiv.appendChild(img)
     albumDiv.appendChild(dlt)
+
     return albumDiv
+  }
+
+  displayNotes() {
+    console.log('notes');
   }
 
   delete(el) {

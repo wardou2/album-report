@@ -50,7 +50,7 @@ function createAlbum(albumTitle, artistName, coverArt) {
   .then(res => res.json())
   .then(json => {
     console.log('created album', json)
-    album = new Album(album.id, album.title, album.artist, album.art)
+    let album = new Album(json.id, json.title, json.artist, json.art)
     renderAlbum(album)
   })
 }
@@ -63,6 +63,6 @@ function main() {
     ev.preventDefault()
     let albumTitle = ev.target.elements['album_title'].value
     let artistName = ev.target.elements['artist_name'].value
-    getAlbum(artistName, albumTitle)
+    searchAlbum(artistName, albumTitle)
   })
 }
