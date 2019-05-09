@@ -23,6 +23,15 @@
       <input type='submit' value="Edit Album">
     </form>
 
+    <div class="form-group">
+      <label for="Sort Albums:">Sort Albums:</label>
+      <select class="form-control" id="album_sort">
+        <option>Date Added</option>
+        <option>Title</option>
+        <option>Artist</option>
+      </select>
+    </div>
+
     <span id='error' class='alert' style="display:none;">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       Album/Artist combination not found
@@ -33,10 +42,10 @@
     <div id="albums-menu" class="left-menu"></div>
 
     <div id="notes-display" class="notes-div" style="display:none">
-      <h1> My Notes:</h1>
+      <h3 id='notes-display-title'> My Notes:</h3>
 
       <form id='new_note'>
-        <textarea id='new_note_content' name="note_content" class="form-control" cols="30" rows="3" placeholder="Add new note"></textarea>
+        <textarea id='new_note_content' name="note_content" class="form-control" placeholder="Add new note"></textarea>
         <input type='submit' value="Add Note">
       </form>
 

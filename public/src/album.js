@@ -1,6 +1,8 @@
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 ];
+let ALBUMS = []
+
 class Album {
   constructor(id, title, artist, art, notes) {
     this.id = id
@@ -8,14 +10,18 @@ class Album {
     this.artist = artist
     this.art = art
     this.notes = notes
+    ALBUMS.push(this)
   }
 
   render() {
     let albumDiv = document.createElement('div')
     albumDiv.classList.add('album-div')
+    let internalAlbumDiv = document.createElement('div')
     let albumText = document.createElement('h3')
-    albumText.textContent = `${this.title} - ${this.artist.name}`
-    albumText.addEventListener('click', () => {
+    albumText.textContent = this.title
+    let artistText = document.createElement('h4')
+    artistText.textContent = this.artist.name
+    internalAlbumDiv.addEventListener('click', () => {
       let newNoteForm = document.getElementById('new_note')
       newNoteForm.setAttribute('data_album_id', this.id)
       this.displayNotes()
@@ -27,23 +33,25 @@ class Album {
 
     let infoDiv = document.createElement('div')
 
-    let edit = document.createElement('button')
-    edit.textContent = "Edit"
-    edit.addEventListener('click', () => {
-      this.edit(albumDiv)
-    })
+    // let edit = document.createElement('button')
+    // edit.textContent = "Edit"
+    // edit.addEventListener('click', () => {
+    //   this.edit(albumDiv)
+    // })
 
     let dlt = document.createElement('button')
-    dlt.textContent = "Delete"
+    dlt.textContent = "Remove"
     dlt.classList.add('btn-warning')
     dlt.addEventListener('click', () => {
       this.delete(albumDiv)
     })
 
-    infoDiv.appendChild(edit)
+    // infoDiv.appendChild(edit)
     infoDiv.appendChild(dlt)
-    albumDiv.appendChild(albumText)
-    albumDiv.appendChild(img)
+    internalAlbumDiv.appendChild(albumText)
+    internalAlbumDiv.appendChild(artistText)
+    internalAlbumDiv.appendChild(img)
+    albumDiv.appendChild(internalAlbumDiv)
     albumDiv.appendChild(infoDiv)
 
     return albumDiv
@@ -51,6 +59,8 @@ class Album {
 
   displayNotes() {
     let notesDiv = document.getElementById('notes-display')
+    let notesTitle = document.getElementById('notes-display-title')
+    notesTitle.textContent = `${this.title} - ${this.artist.name} Notes`
     notesDiv.style.display = "inline-block"
     let notesList = document.getElementById('notes-list')
     while (notesList.firstChild) {
@@ -77,5 +87,58 @@ class Album {
     .then(json => {
       el.remove()
     })
+  }
+
+  static sort(filter) {
+    let retArr = [...ALBUMS]
+
+    switch (filter) {
+      case "Date Added":
+        clearAlbums()
+        retArr.forEach(al => {
+          renderAlbum(al)
+        })
+        break
+      case "Artist":
+        retArr.sort((a, b) => {
+          if (removeThe(a.artist.name) < removeThe(b.artist.name)) {
+            return 1
+          }
+          if (removeThe(a.artist.name) > removeThe(b.artist.name)) {
+            return -1
+          }
+          return 0
+        })
+        clearAlbums()
+        retArr.forEach(al => {
+          renderAlbum(al)
+        })
+        break
+      case "Title":
+      // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+        retArr.sort((a, b) => {
+          if (removeThe(a.title) < removeThe(b.title)) {
+            return 1
+          }
+          if (removeThe(a.title) > removeThe(b.title)) {
+            return -1
+          }
+          return 0
+        })
+        clearAlbums()
+        retArr.forEach(al => {
+          renderAlbum(al)
+        })
+        break
+    }
+  }
+}
+
+function removeThe(el) {
+  if (el.slice(0,4).toUpperCase() === "THE ") {
+    console.log(el.slice(0,4))
+    return el.slice(4)
+  } else {
+    return el
   }
 }

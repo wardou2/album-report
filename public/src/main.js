@@ -18,14 +18,13 @@ function getAlbums() {
 
 function eachAlbums(albums) {
   clearAlbums()
-
   albums.forEach(album => {
+    album = new Album(album.id, album.title, album.artist, album.art, album.notes)
     renderAlbum(album)
   })
 }
 
 function renderAlbum(album) {
-  album = new Album(album.id, album.title, album.artist, album.art, album.notes)
   let leftDiv = document.getElementById('albums-menu')
   leftDiv.prepend(album.render())
 }
@@ -96,5 +95,10 @@ function main() {
   let newNoteForm = document.getElementById('new_note')
   newNoteForm.addEventListener('submit', (ev) => {
     createNote(ev)
+  })
+
+  let sortSelect = document.getElementById('album_sort')
+  sortSelect.addEventListener('change', (ev) => {
+    Album.sort(ev.target.value)
   })
 }

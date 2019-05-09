@@ -21,7 +21,7 @@ class Note {
 
   handleEdit(ev, el) {
     ev.preventDefault()
-    fetch(notesURL + '/' + CURRENT_NOTE.id, {
+    fetch(notesURL + '/' + ev.target.getAttribute('data_note_id'), {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -86,6 +86,8 @@ class Note {
     edit.textContent = "Edit"
     edit.style.float = 'right'
     edit.addEventListener('click', () => {
+      let editNoteForm = document.getElementById('edit_note')
+      editNoteForm.setAttribute('data_note_id', this.id)
       this.edit(li)
     })
     li.classList.add('borderlist')

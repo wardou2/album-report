@@ -51,6 +51,11 @@ div.album-div {
     background-color: tomato;
 }
 
+.form-group {
+  margin: 0 auto;
+  width: 200px;
+}
+
 div.notes-div {
   float: left;
   border-style: solid;
