@@ -8,15 +8,18 @@ class Note {
 
   edit(el) {
     CURRENT_NOTE = this
+    let newForm = document.getElementById('new_note')
+    newForm.style.display = 'none'
+
     let editForm = document.getElementById('edit_note')
     editForm.elements["note_content"].value = this.content
     editForm.style.display = 'inline-block'
     editForm.addEventListener('submit', (ev) => {
-      this.handleEdit(ev, editForm, el)
+      this.handleEdit(ev, el)
     })
   }
 
-  handleEdit(ev, editForm, el) {
+  handleEdit(ev, el) {
     ev.preventDefault()
     fetch(notesURL + '/' + CURRENT_NOTE.id, {
       method: "PATCH",
@@ -33,6 +36,12 @@ class Note {
       this.content = json.content
       this.album = json.album
       this.created_at = json.created_at
+
+      let newForm = document.getElementById('new_note')
+      newForm.style.display = 'inline-block'
+      let editForm = document.getElementById('edit_note')
+      editForm.style.display = 'none'
+
       this.render(el)
     })
   }
@@ -64,20 +73,22 @@ class Note {
 
     li.textContent = `${dateObj.getDate()} ${monthNames[dateObj.getMonth()]} ${dateObj.getFullYear()} - ${this.content}`
 
-    let edit = document.createElement('button')
-    edit.textContent = "Edit Note"
-    edit.style.float = 'right'
-    edit.addEventListener('click', () => {
-      this.edit(li)
-    })
-    li.appendChild(edit)
-
     let dlt = document.createElement('button')
     dlt.textContent = "Delete"
     dlt.style.float = 'right'
+    dlt.classList.add('btn-warning')
     dlt.addEventListener('click', () => {
       this.delete(li)
     })
     li.appendChild(dlt)
+
+    let edit = document.createElement('button')
+    edit.textContent = "Edit"
+    edit.style.float = 'right'
+    edit.addEventListener('click', () => {
+      this.edit(li)
+    })
+    li.classList.add('borderlist')
+    li.appendChild(edit)
   }
 }

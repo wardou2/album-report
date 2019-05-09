@@ -37,7 +37,7 @@ function clearAlbums() {
   }
 }
 
-function createNote(ev, album) {
+function createNote(ev) {
   ev.preventDefault()
   fetch(notesURL, {
     method: "POST",
@@ -47,11 +47,13 @@ function createNote(ev, album) {
     },
     body: JSON.stringify({
       content: ev.target.elements['note_content'].value,
-      album_id: album.id
+      album_id: ev.target.getAttribute('data_album_id')
     })
   })
   .then(res => res.json())
   .then(json => {
+    // let newNoteForm = document.getElementById('new_note')
+    // newNoteForm.removeEventListener('submit', _func(ev))
     let note = new Note(json.id, json.content, json.album, json.created_at)
     let li = document.createElement('li')
     let notesList = document.getElementById('notes-list')
@@ -89,5 +91,10 @@ function main() {
     let albumTitle = ev.target.elements['album_title'].value
     let artistName = ev.target.elements['artist_name'].value
     searchAlbum(artistName, albumTitle)
+  })
+
+  let newNoteForm = document.getElementById('new_note')
+  newNoteForm.addEventListener('submit', (ev) => {
+    createNote(ev)
   })
 }

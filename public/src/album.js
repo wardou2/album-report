@@ -16,6 +16,8 @@ class Album {
     let albumText = document.createElement('h3')
     albumText.textContent = `${this.title} - ${this.artist.name}`
     albumText.addEventListener('click', () => {
+      let newNoteForm = document.getElementById('new_note')
+      newNoteForm.setAttribute('data_album_id', this.id)
       this.displayNotes()
     })
 
@@ -33,6 +35,7 @@ class Album {
 
     let dlt = document.createElement('button')
     dlt.textContent = "Delete"
+    dlt.classList.add('btn-warning')
     dlt.addEventListener('click', () => {
       this.delete(albumDiv)
     })
@@ -53,11 +56,6 @@ class Album {
     while (notesList.firstChild) {
       notesList.firstChild.remove()
     }
-
-    let newNoteForm = document.getElementById('new_note')
-    newNoteForm.addEventListener('submit', (ev) => {
-      createNote(ev, this)
-    })
 
     this.notes.forEach(note => {
       note = new Note(note.id, note.content, note.album, note.created_at)

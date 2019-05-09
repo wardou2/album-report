@@ -1,45 +1,51 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 <body>
-  <h1 id='title'>Album Notes</h1>
+  <div class="top-bar">
 
-  <form id='new_album'>
-    <label for="artist_name">Artist Name: </label>
-    <input type="text" name="artist_name"><br>
-    <label for="album_title">Album Title: </label>
-    <input type="text" name="album_title"><br>
-    <input type='submit' value="Add Album">
-  </form>
+    <h1 id='title'>Album Notes</h1>
 
-  <form id='edit_album' style="display:none;">
-    <label for="artist_name">Artist Name: </label>
-    <input type="text" id='edit_artist_name' name="artist_name"><br>
-    <label for="album_title">Album Title: </label>
-    <input type="text" id='edit_album_title' name="album_title"><br>
-    <input type='submit' value="Edit Album">
-  </form>
-
-  <div id='error' class='alert' style="display:none;">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    Album/Artist combination not found
-  </div><br>
-
-  <div id="albums-menu" class="left-menu"></div>
-
-  <div id="notes-display" class="notes-div" style="display:none">
-    <h1> My Notes:</h1>
-    
-    <form id='new_note'>
-      <label for="note_content">New Note: </label>
-      <input type="text" id='new_note_content' name="note_content">
-      <input type='submit' value="Add Note">
+    <form id='new_album'>
+      <label for="album_title">Album Title: </label>
+      <input type="text" name="album_title">
+      <label for="artist_name">Artist Name: </label>
+      <input type="text" name="artist_name">
+      <input type='submit' value="Add Album">
     </form>
 
-    <form id='edit_note' style="display:none;">
-      <label for="note_content">Note Content: </label>
-      <input type="text" id='edit_note_content' name="note_content"><br>
-      <input type='submit' value="Edit Note">
+    <form id='edit_album' style="display:none;">
+      <label for="artist_name">Artist Name: </label>
+      <input type="text" id='edit_artist_name' name="artist_name"><br>
+      <label for="album_title">Album Title: </label>
+      <input type="text" id='edit_album_title' name="album_title"><br>
+      <input type='submit' value="Edit Album">
     </form>
-    <ul id='notes-list'> <ul>
+
+    <span id='error' class='alert' style="display:none;">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      Album/Artist combination not found
+    </span><br>
+  </div>
+
+  <div id="content-div">
+    <div id="albums-menu" class="left-menu"></div>
+
+    <div id="notes-display" class="notes-div" style="display:none">
+      <h1> My Notes:</h1>
+
+      <form id='new_note'>
+        <textarea id='new_note_content' name="note_content" class="form-control" cols="30" rows="3" placeholder="Add new note"></textarea>
+        <input type='submit' value="Add Note">
+      </form>
+
+      <form id='edit_note' style="display:none;">
+        <textarea id='edit_note_content' name="note_content" class="form-control" cols="30" rows="3"></textarea>
+        <input type='submit' value="Edit Note">
+      </form>
+      <ul id='notes-list'> <ul>
+    </div>
   </div>
 </body>
 

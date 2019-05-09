@@ -1,26 +1,68 @@
+.top-bar {
+  border: 2px solid;
+  border-radius: 13px;
+  background-color: tomato;
+  margin: 5px;
+  text-align: center;
+
+}
+
 div.left-menu {
   float: left;
   width: 275px;
+
+  /* position: absolute;
+  left: 5px;
+  width: 25%; */
+
   text-align: center;
-  border-style: solid;
+
+  border: 2px solid;
   border-radius: 13px;
-  background-color:black;
+  background-color: darkcyan;
+
+  margin-left: 5px;
 
   height: 80vh;
   overflow: scroll;
 }
 
+.content-div {
+  width: 100%;
+}
+
 div.album-div {
-  background-color: lightblue;
+  background-color: lightsteelblue;
+  border: 2px solid;
   border-style: solid;
-  border-radius: 10px;
-  margin: 10px
+  /* height: 300px; */
+  border-radius: 11px;
+  margin: 10px;
+  padding: 5px;
+
+}
+
+.borderlist {
+    list-style-position:inside;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 3px;
+    padding: 5px;
+    background-color: tomato;
 }
 
 div.notes-div {
-  /* float: left; */
-  margin: 10px;
+  float: left;
+  border-style: solid;
+  border-radius: 13px;
+  margin-left: 30px;
+  padding: 10px;
+  background-color: lightsteelblue;
 
+  height: 80vh;
+
+  width: 60%;
+  right: 35px;
 }
 
 img.album-art {
@@ -30,7 +72,7 @@ img.album-art {
 }
 
 body {
-   background-color: goldenrod;
+   background-color: linen;
    font-family: 'Open Sans', sans-serif;
  }
 
