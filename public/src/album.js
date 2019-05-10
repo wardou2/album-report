@@ -17,6 +17,7 @@ class Album {
     let albumDiv = document.createElement('div')
     albumDiv.classList.add('album-div')
     let internalAlbumDiv = document.createElement('div')
+    internalAlbumDiv.classList.add('internal-album-div')
     let albumText = document.createElement('h3')
     albumText.textContent = this.title
     let artistText = document.createElement('h4')

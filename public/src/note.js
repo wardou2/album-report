@@ -78,6 +78,10 @@ class Note {
     dlt.style.float = 'right'
     dlt.classList.add('btn-warning')
     dlt.addEventListener('click', () => {
+      // let album = ALBUMS.find(a => a.id === this.album.id)
+      // album.notes = album.notes.filter(note => {
+      //   return note.id != this.id
+      // })
       this.delete(li)
     })
     li.appendChild(dlt)

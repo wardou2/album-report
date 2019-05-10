@@ -2,18 +2,32 @@
   border: 2px solid;
   border-radius: 13px;
   background-color: tomato;
-  margin: 5px;
+  margin: 10px;
   text-align: center;
+  filter: drop-shadow(10px 10px 10px gray);
+}
 
+.blank-div {
+  margin-left: 15px;
+  width: 20%;
+  float: left;
+}
+
+.center-h1-div {
+  margin: auto;
+  width: 50%;
+  display: inline-block;
+}
+
+.new-album-form-div {
+  margin-right: 15px;
+  width: 20%;
+  float: right;
 }
 
 div.left-menu {
   float: left;
   width: 275px;
-
-  /* position: absolute;
-  left: 5px;
-  width: 25%; */
 
   text-align: center;
 
@@ -23,8 +37,10 @@ div.left-menu {
 
   margin-left: 5px;
 
-  height: 80vh;
+  height: 77vh;
   overflow: scroll;
+
+  filter: drop-shadow(10px 10px 10px gray);
 }
 
 .content-div {
@@ -39,16 +55,19 @@ div.album-div {
   border-radius: 11px;
   margin: 10px;
   padding: 5px;
+}
 
+.internal-album-div {
+  cursor: pointer;
 }
 
 .borderlist {
-    list-style-position:inside;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 3px;
-    padding: 5px;
-    background-color: tomato;
+  list-style-position:inside;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 3px;
+  padding: 5px;
+  background-color: tomato;
 }
 
 .form-group {
@@ -58,16 +77,18 @@ div.album-div {
 
 div.notes-div {
   float: left;
+  border: 2px;
   border-style: solid;
   border-radius: 13px;
-  margin-left: 30px;
+  margin-left: 2vh;
   padding: 10px;
   background-color: lightsteelblue;
 
-  height: 80vh;
+  height: 77vh;
 
   width: 60%;
   right: 35px;
+  filter: drop-shadow(10px 10px 10px gray);
 }
 
 img.album-art {
@@ -84,13 +105,17 @@ body {
 div.error {
  display: none;
  background-color: red;
+ position: relative;
+ float: left;
 }
 
 .alert {
   padding: 20px;
   background-color: red;
   color: white;
-  margin-bottom: 15px;
+  position: absolute;
+  top: 55%;
+  margin-top: -3em;
 }
 
 .closebtn {

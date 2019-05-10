@@ -51,9 +51,11 @@ function createNote(ev) {
   })
   .then(res => res.json())
   .then(json => {
-    // let newNoteForm = document.getElementById('new_note')
-    // newNoteForm.removeEventListener('submit', _func(ev))
+    let album = ALBUMS.find(album => {
+      return album.id === json.album.id
+    })
     let note = new Note(json.id, json.content, json.album, json.created_at)
+    album.notes.push(note)
     let li = document.createElement('li')
     let notesList = document.getElementById('notes-list')
     note.render(li)
@@ -95,6 +97,7 @@ function main() {
   let newNoteForm = document.getElementById('new_note')
   newNoteForm.addEventListener('submit', (ev) => {
     createNote(ev)
+    ev.target.elements['note_content'].value = ''
   })
 
   let sortSelect = document.getElementById('album_sort')
